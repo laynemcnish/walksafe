@@ -1,0 +1,24 @@
+<h1>Login!</h1>
+
+<% if flash[:error] %>
+  <p class="error"><%= flash[:error] %></p>
+<% end %>
+
+
+<form action="/login" method="post">
+
+  <div class="form-element">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"/>
+  </div>
+
+  <div class="form-element">
+    <label for="password">Password: </label>
+    <input type="password" id="password" name="password"/>
+  </div>
+
+  <p></p>
+
+  <input type="submit" class="button" value="Login"/>
+
+</form>

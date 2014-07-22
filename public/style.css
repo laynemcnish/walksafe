@@ -17,7 +17,7 @@ html {
     height: 100px;
     position: relative;
     margin: 0px;
-    padding: 0px;
+    padding-left: 20px;
 }
 
 
@@ -27,11 +27,14 @@ nav {
     border-top: solid #000000;
     width: 100%;
     margin: 0px;
-    padding: 0px;
+    padding-left: 20px;
 }
 
 #content {
     background-color: #fff; /* White */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
 }
 
 footer {
@@ -41,5 +44,16 @@ footer {
 .wrapper {
     margin: auto;
     width: 980px;
+
+}
+
+.form-element label {
+    display: inline-block;
+    width: 200px;
+}
+
+.form-element input {
+    display: inline-block;
+    width: 200px;
 }
 
