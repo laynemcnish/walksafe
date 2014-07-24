@@ -2,6 +2,9 @@
 <html>
 <head>
   <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+
   <title>Safe Walk</title>
   <div class="header">
   <div class="wrapper">
@@ -13,7 +16,12 @@
 
 <nav>
   <div class="wrapper">
+    <% if session[:user] %>
     <a href="/">Home</a>
+    <a href="/logout">Log Out</a>
+      <% else %>
+      <a href="/">Home</a>
+      <% end %>
   </div><!--end wrapper-->
 </nav>
 

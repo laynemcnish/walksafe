@@ -14,16 +14,16 @@ class App < Sinatra::Application
   end
 
   get "/" do
-    if session[:user]
-      redirect "/home"
-    end
-      erb :loggedout
+    @users = @users_table.user_setter
+
+    erb :home, :locals => {:users => @users}
   end
 
-  get "/home" do
-    @users = @users_table.user_setter
-    erb :loggedin, :locals => {:users => @users}
-  end
+  # get "/home" do
+  #   @users = @users_table.user_setter
+  #
+  #   erb :home, :locals => {:users => @users}
+  # end
 
   get "/signup" do
     erb :signup
@@ -38,32 +38,37 @@ class App < Sinatra::Application
     erb :login
   end
 
-  post "/login" do
+  post "/sessions" do
     user = @users_table.find_user(params[:username], params[:password])
 
     if user != nil
       session[:user] = user
-      redirect "/signup"
+      redirect "/"
 
     elsif params[:username] == "" && params[:password] == ""
       flash[:error] = "Username and password required."
-      redirect "/signup"
+      redirect "/login"
 
     elsif params[:username] == ""
       flash[:error] = "Username required."
-      redirect "/signup"
+      redirect "/login"
 
     elsif params[:password] == ""
       flash[:error] = "Password required."
-      redirect "/signup"
+      redirect "/login"
+
+    elsif user == nil
+      flash[:error] = "Login Info is incorrect"
+      redirect "/login"
+
     end
     session[:user]
-    redirect "/home"
+    redirect "/"
+
   end
 
-  post "/logout" do
+  get "/logout" do
     session.delete(:user)
     redirect "/"
   end
 end
-
