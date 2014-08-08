@@ -32,6 +32,10 @@ html {
     right: 0;
 }
 
+.header-content {
+    padding-left: 20px;
+}
+
 nav {
     background-color: #f4f4f4; /* Light Grey */
     border-bottom: solid #000000 3px;
