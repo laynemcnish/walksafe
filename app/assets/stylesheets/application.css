@@ -1,4 +1,7 @@
-
+/*
+ *= require_tree .
+ *= require_self
+ */
 
 html {
     background: url(http://payload146.cargocollective.com/1/10/343738/5238941/New%20York1_905.jpg) left;
