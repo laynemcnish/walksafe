@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SafeWalk</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+  <title>Safe Walk</title>
+
+  <div class="header">
+    <div class="wrapper">
+      <h1>SAFE WALK</h1>
+    </div>
+  </div>
+</head>
+
+<body>
+
+<nav>
+  <div class="wrapper">
+    <% if session[:user] %>
+      <a href="/">Home</a>
+      <a href="/logout">Log Out</a>
+    <% else %>
+      <a href="/">Home</a>
+    <% end %>
+  </div>
+  <!--end wrapper-->
+</nav>
+
+
+<div class="wrapper">
+  <div id="content">
+    <%= yield %>
+  </div>
+  <!--end wrapper-->
+</div>
+<!--end content-->
+
+
+</body>
+</html>
+
+

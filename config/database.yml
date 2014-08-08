@@ -1,15 +1,18 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: safewalk
   pool: 5
-  username: gschool
-  password:
+
+development:
+  <<: *default
+  database: safe-walk_development
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: safewalk_test
-  pool: 5
-  username: gschool
-  password:
+  <<: *default
+  database: safe-walk_test
+
+production:
+  <<: *default
+  database: safe-walk_production
+  username: safe-walk
+  password: <%= ENV['SAFE-WALK_DATABASE_PASSWORD'] %>

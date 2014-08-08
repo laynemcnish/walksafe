@@ -1,5 +1,6 @@
-root_dir = File.expand_path("./..", __FILE__)
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-require "#{root_dir}/app"
+require File.expand_path('../config/application', __FILE__)
 
-Dir.glob("#{root_dir}/lib/tasks/*.rake").each { |r| import r }
+Rails.application.load_tasks
