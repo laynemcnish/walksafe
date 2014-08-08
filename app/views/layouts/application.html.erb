@@ -19,9 +19,9 @@
 
 <nav>
   <div class="wrapper">
-    <% if session[:user] %>
-      <a href="/">Home</a>
-      <a href="/logout">Log Out</a>
+    <% if current_user %>
+      <%= link_to "Home", maps_path %>
+      <%= link_to "Logout", login_path(@user.id), :method => :delete %>
     <% else %>
       <a href="/">Home</a>
     <% end %>
