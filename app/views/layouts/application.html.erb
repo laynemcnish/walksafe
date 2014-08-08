@@ -8,35 +8,36 @@
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
   <title>Safe Walk</title>
 
-  <div class="header">
-    <div class="wrapper">
-      <h1>SAFE WALK</h1>
-    </div>
-  </div>
+
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet'/>
 </head>
 
 <body>
-
-<nav>
-  <div class="wrapper">
-    <% if current_user %>
-      <%= link_to "Home", maps_path %>
-      <%= link_to "Logout", login_path(@user.id), :method => :delete %>
-    <% else %>
-      <a href="/">Home</a>
-    <% end %>
+<div class="header">
+  <div class="header-content">
+    <h1>SAFE WALK</h1>
   </div>
-  <!--end wrapper-->
-</nav>
+  <nav class="nav">
+    <nav class="nav-content">
+      <% if current_user %>
+        <%= link_to "Home", maps_path %>
+        <%= link_to "Logout", login_path(@user.id), :method => :delete %>
+      <% else %>
+        <%= link_to "Home", maps_path %>
+      <% end %>
+    </nav>
+  </nav>
+
+</div>
 
 
 <div class="wrapper">
   <div id="content">
     <%= yield %>
   </div>
-  <!--end wrapper-->
 </div>
-<!--end content-->
 
 
 </body>

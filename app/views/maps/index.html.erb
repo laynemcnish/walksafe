@@ -1,48 +1,23 @@
 <h1>Welcome <%= @user.first_name %>!</h1>
 
-
-
-
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<div id="map" style="width: 900px; height: 900px"></div>
-
-
+<div id='map'></div>
 <script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoibG1jbmlzaDE0IiwiYSI6ImRqYkxyWXcifQ.Ji7WWNWmsIk8sXZ3axIzxw';
 
-  var map = L.map('map').setView([40.761922, -73.9441684], 13);
+  var geocoder = L.mapbox.geocoder('mapbox.places-v1'),
+    southWest = L.latLng(40.822513, -73.83756),
+    northEast = L.latLng(40.728657, -74.1062),
+    bounds = L.latLngBounds(southWest, northEast);
+  map =  L.mapbox.map('map', 'lmcnish14.j5mnmepm',{
+    maxBounds: bounds,
+    maxZoom: 19,
+    minZoom: 13
+  }).addControl(L.mapbox.geocoderControl('mapbox.places-v1-adder')),
 
-  L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'examples.map-i86knfo3'
-  }).addTo(map);
-
-  var popup = L.popup();
-
-  function onMapClick(e) {
-    popup
-      .setLatLng(e.latlng)
-      .setContent("You clicked the map at " + e.latlng.toString())
-      .openOn(map);
-  }
-
-  map.on('click', onMapClick);
-
-  L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-  }).addTo(map);
-
-  var heatmap = new L.DivHeatmapLayer();
-
-  heatmap.addTo(map);
-
-  heatmap.testAddData();
-
+    map.fitBounds(bounds);
 
 </script>
+
 
 
 
