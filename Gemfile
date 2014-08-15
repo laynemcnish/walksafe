@@ -18,3 +18,7 @@ group :development, :test do
   gem "capybara", "2.3.0"
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
