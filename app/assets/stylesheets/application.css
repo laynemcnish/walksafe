@@ -85,7 +85,7 @@ footer {
 
 #panel {
     position: absolute;
-    top: 5px;
+    top: 120px;
     left: 50%;
     margin-left: -180px;
     z-index: 5;
