@@ -3,17 +3,17 @@
  *= require_self
  */
 
+*, h1 {
+    margin: 0;
+    Padding: 0;
+}
+
 html {
     background: url(http://payload146.cargocollective.com/1/10/343738/5238941/New%20York1_905.jpg) left;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-* {
-    margin: 0;
-    Padding: 0;
 }
 
 .signin-form {
@@ -23,9 +23,8 @@ html {
 .header {
     background-color: #88DAE7;
     width: 100%;
-    height: 100px;
+    height: 50px;
     position: fixed;
-    margin: 0px;
     z-index: 99;
     top: 0;
     left: 0;
@@ -41,20 +40,20 @@ nav {
     border-bottom: solid #000000 3px;
     border-top: solid #000000 1px;
     width: 100%;
-    margin: 0px;
     position: fixed;
     z-index: 99;
+    padding-left: 250px;
 }
 
-.nav-content
-{
-   padding-left: 250px;
-}
+/*.nav-content*/
+/*{*/
+   /*padding-left: 250px;*/
+/*}*/
 
 #content {
     background-color: #f4f4f4; /* Light Grey */
     padding: 20px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 footer {
@@ -77,12 +76,22 @@ footer {
     width: 200px;
 }
 
-#map {
+#map-canvas {
     height: 900px;
     margin: auto;
     width: 900px;
     z-index: 0;
 }
 
+#panel {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+}
 
 
