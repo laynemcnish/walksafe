@@ -21,3 +21,9 @@ It will also include the addition of a new feature that allows the user to text 
 <h3>Phase 3 - Optional</h3>
 
 The last (optional) phase will move the app from a strictly web-based app to a mobile app.  I will determine later if this will be feasible in the time I have left at gSchool once I have gotten through the first two phases.
+
+<h3>NOTE</h3>
+Until I fix the register/login issue, first click log out then use:
+
+Username: user
+Password: user
