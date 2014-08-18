@@ -16,6 +16,12 @@ html {
     background-size: cover;
 }
 
+#body-content {
+    width: 1600px;
+    margin: auto;
+
+}
+
 .signin-form {
     display: block;
 }
@@ -31,12 +37,20 @@ html {
     right: 0;
 }
 
+.wrapper {
+    width: 600px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f4f4f4;
+}
+
 .header-content {
     padding-left: 20px;
 }
 
 nav {
-    background-color: #f4f4f4; /* Light Grey */
+    background-color: #f4f4f4;
     border-bottom: solid #000000 3px;
     border-top: solid #000000 1px;
     width: 100%;
@@ -45,26 +59,47 @@ nav {
     padding-left: 250px;
 }
 
-/*.nav-content*/
-/*{*/
-   /*padding-left: 250px;*/
-/*}*/
-
-#content {
-    background-color: #f4f4f4; /* Light Grey */
-    padding: 20px;
-    margin-top: 50px;
+.nav-content {
+    padding-left: 250px;
 }
+
+
+
+#content-left {
+    background-color: #f4f4f4;
+    margin-top: 59px;
+    margin-left: 20px;
+    float: left;
+    width: 400px;
+}
+
+#content-right {
+    display: hidden;
+    /*background-color: #f4f4f4;*/
+    margin-top: 50px;
+    margin-right:15px;
+    float: right;
+    width: 400px;
+
+}
+
+#content-middle {
+    width: 600px;
+    background-color: #f4f4f4;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    margin-top: 59px;
+    display: inline-block;
+
+}
+
+
 
 footer {
-    background-color: #c5c5c5; /* Dark Grey */
+    background-color: #c5c5c5;
 }
 
-.wrapper {
-    margin: auto;
-    width: 980px;
 
-}
 
 .form-element label {
     display: inline-block;
@@ -77,9 +112,9 @@ footer {
 }
 
 #map-canvas {
-    height: 900px;
-    margin: auto;
-    width: 900px;
+    height: 600px;
+    margin-right: 600px;
+    width: 600px;
     z-index: 0;
 }
 
@@ -92,6 +127,39 @@ footer {
     background-color: #fff;
     padding: 5px;
     border: 1px solid #999;
+}
+
+#directions-panel {
+    height: 600px;
+    float: right;
+    width: 380px;
+    overflow: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+#control {
+    background: #fff;
+    padding: 5px;
+    font-size: 14px;
+    font-family: Arial;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+    display: none;
+}
+
+@media print {
+    #map-canvas {
+        height: 600px;
+        margin: 0;
+    }
+
+    #directions-panel {
+        float: none;
+        width: auto;
+    }
 }
 
 

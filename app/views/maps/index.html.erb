@@ -1,24 +1,43 @@
-<h1>Welcome <%= @user.first_name %>!</h1>
+<div id="content-left">
+  <div id="control">
+    <strong>Start:</strong>
+    <select id="start" onchange="calcRoute();">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+    <strong>End:</strong>
+    <select id="end" onchange="calcRoute();">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+  </div>
+</div>
 
-<!--<div id="panel">-->
-  <!--<b>Start: </b>-->
-  <!--<select id="start">-->
-    <!--<option value="penn station, new york, ny">Penn Station</option>-->
-    <!--<option value="grand central station, new york, ny">Grand Central Station</option>-->
-    <!--<option value="625 8th Avenue, New York, NY, 10018">Port Authority Bus Terminal</option>-->
-    <!--<option value="staten island ferry terminal, new york, ny">Staten Island Ferry Terminal</option>-->
-    <!--<option value="101 E 125th Street, New York, NY">Harlem - 125th St Station</option>-->
-  <!--</select>-->
-  <!--<b>End: </b>-->
-  <!--<select id="end" onchange="calcRoute();">-->
-    <!--<option value="260 Broadway New York NY 10007">City Hall</option>-->
-    <!--<option value="W 49th St & 5th Ave, New York, NY 10020">Rockefeller Center</option>-->
-    <!--<option value="moma, New York, NY">MOMA</option>-->
-    <!--<option value="350 5th Ave, New York, NY, 10118">Empire State Building</option>-->
-    <!--<option value="253 West 125th Street, New York, NY">Apollo Theater</option>-->
-    <!--<option value="1 Wall St, New York, NY">Wall St</option>-->
-  <!--</select>-->
-<!--</div>-->
-<div id="map-canvas"></div>
+<div id="content-middle">
+  <div id="map-canvas"></div>
+</div>
 
-<div id="warnings_panel" style="width:100%;height:10%;text-align:center"></div>
+<div id="content-right">
+  <div id="directions-panel"></div>
+</div>
+
