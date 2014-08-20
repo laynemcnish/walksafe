@@ -1,36 +1,41 @@
+<div class="flex-container">
+  <div class="flex-item">
+    <h1>Register for Safe Walk!</h1>
 
-<h1>Register for Safe Walk!</h1>
+    <div class="errors" style="display:inline;">
+      <% @user.errors.messages.values.each do |message| %>
+        <%= message.first %>
+      <% end %>
+    </div>
 
-<div class="errors" style="display:inline;">
-  <% @user.errors.messages.values.each do |message| %>
-    <%= message.first %>
-  <% end %>
+    <%= form_for @user, url: "/users", html: {class: "register-form"} do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <ul>
+      <li>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </li>
+      <li>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </li>
+      <li>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </li>
+      <li>
+        <%= f.label :email_address %>
+        <%= f.email_field :email_address, autofocus: true %>
+      </li>
+      <li>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </li>
+      <%= f.hidden_field :id %>
+      <li>
+        <%= f.submit %>
+      </li>
+        </ul>
+    <% end %>
+  </div>
 </div>
-
-<%= form_for @user, url: "/users", html: {class: "register-form"} do |f| %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-  <div>
-    <%= f.label :email_address %>
-    <%= f.email_field :email_address, autofocus: true %>
-  </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <%= f.hidden_field :id %>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>

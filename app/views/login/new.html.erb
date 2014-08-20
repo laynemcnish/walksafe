@@ -1,27 +1,26 @@
+<div class="flex-container">
+  <div class="flex-item">
+    <h1>Login!</h1>
 
-<article class="main">
-<h1>Login!</h1>
-
-<% if flash[:error] %>
-  <p class="error"><%= flash[:error] %></p>
-<% end %>
+    <% if flash[:error] %>
+      <p class="error"><%= flash[:error] %></p>
+    <% end %>
 
 
-<%= form_for @user, url: "/login", html: {class: "register-form"} do |f| %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= form_for @user, url: "/login", html: {class: "register-form"} do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.submit "Login" %>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
-  </article>
+</div>
 
-<aside class="aside-1"></aside>
-<aside class="aside-2"></aside>

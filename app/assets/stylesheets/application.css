@@ -21,6 +21,24 @@ html {
     align-items: flex-start;
 }
 
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.flex-item {
+    background: #ffffff;
+    padding: 100px;
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+
 .logo {
     height: 40px;
 }
@@ -138,4 +156,9 @@ html {
     font-family: Arial, sans-serif;
     border: 1px solid #ccc;
     box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+}
+
+li {
+    list-style: none;
+    display: block;
 }
