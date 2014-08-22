@@ -21,12 +21,7 @@
       <h1>SAFE WALK</h1>
     </div>
     <nav class="navigation">
-      <% if current_user %>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Logout", login_path(@user.id), :method => :delete %></li>
-      <% else %>
-        <li><%= link_to "Home", maps_path %></li>
-      <% end %>
+      <li><%= link_to "Home", root_path %></li>
     </nav>
   </header>
 
