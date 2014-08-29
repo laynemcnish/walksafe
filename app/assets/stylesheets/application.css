@@ -40,15 +40,13 @@ html {
 }
 
 .logo {
-    height: 40px;
+    height: 80px;
 }
 
 .header {
     background-color: #88DAE7;
     z-index: 99;
     align-items: flex-end;
-    /*height: 50px;*/
-
 }
 
 .aside-1, .aside-2 {
@@ -100,10 +98,11 @@ html {
     display: block;
     padding: 1em;
     color: white;
+
 }
 
 .navigation a:hover {
-    background: darken(deepskyblue, 2%);
+    background: deepskyblue, 2%;
 }
 
 @media all and (max-width: 800px) {
