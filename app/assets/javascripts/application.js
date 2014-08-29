@@ -51,7 +51,8 @@ function calcRoute(event) {
   var request = {
     origin: start,
     destination: end,
-    travelMode: google.maps.TravelMode.WALKING
+    travelMode: google.maps.TravelMode.WALKING,
+    provideRouteAlternatives : true
 
   };
 

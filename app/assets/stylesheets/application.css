@@ -206,3 +206,7 @@ li {
     marker-fill: #FFCC00;
 }
 
+.adp-warnbox {
+    display: none;
+}
+
