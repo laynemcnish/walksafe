@@ -12,6 +12,7 @@ html {
 
 .header, .main, .nav, .aside, .footer {
     flex: 1 100%;
+    margin: 0px;
 }
 
 .wrapper {
@@ -40,13 +41,23 @@ html {
 }
 
 .logo {
-    height: 80px;
+    height: 40px;
 }
 
 .header {
     background-color: #88DAE7;
     z-index: 99;
     align-items: flex-end;
+    margin: 0px;
+    /*height: 50px;*/
+
+}
+
+.directions-container {
+    height: 87vh;
+    border:1px solid #ccc;
+    overflow:auto;
+
 }
 
 .aside-1, .aside-2 {
@@ -74,6 +85,7 @@ html {
     .main    { order: 2; }
     .aside-2 { order: 3; }
     .footer  { order: 4; }
+
 }
 
 .navigation {
@@ -98,16 +110,16 @@ html {
     display: block;
     padding: 1em;
     color: white;
-
+    margin: 0px;
 }
 
 .navigation a:hover {
-    background: deepskyblue, 2%;
+    background: darken(deepskyblue, 2%);
 }
 
 @media all and (max-width: 800px) {
     .navigation {
-        justify-content: space-around;
+        /*justify-content: space-around;*/
     }
 }
 
@@ -116,6 +128,7 @@ html {
         -webkit-flex-flow: column wrap;
         flex-flow: column wrap;
         padding: 0;
+        margin: 0;
     }
 
     .navigation a {
@@ -142,8 +155,12 @@ html {
     max-width: 300px;
 }
 
+.adp {
+}
+
 .adp-warnbox {
      margin: 0px;
+    display: none;
 }
 
 
@@ -203,9 +220,5 @@ li {
 }
 #crime_updated[severity="1"] {
     marker-fill: #FFCC00;
-}
-
-.adp-warnbox {
-    display: none;
 }
 
