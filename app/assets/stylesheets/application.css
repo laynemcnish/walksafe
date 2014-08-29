@@ -162,3 +162,47 @@ li {
     list-style: none;
     display: block;
 }
+
+#crime_updated {
+    marker-fill-opacity: 0.5;
+    marker-line-color: #FFF;
+    marker-line-width: 1.5;
+    marker-line-opacity: 1;
+    marker-placement: point;
+    marker-type: ellipse;
+    marker-width: 10;
+    marker-allow-overlap: true;
+}
+
+.cartodb-popup {
+    display: none;
+}
+
+#crime_updated[severity="10"] {
+    marker-fill: #850200;
+}
+#crime_updated[severity="9"] {
+    marker-fill: #B81609;
+}
+#crime_updated[severity="8"] {
+    marker-fill: #B40903;
+}
+#crime_updated[severity="7"] {
+    marker-fill: #D6301D;
+}
+#crime_updated[severity="6"] {
+    marker-fill: #F11810;
+}
+#crime_updated[severity="5"] {
+    marker-fill: #F84F40;
+}
+#crime_updated[severity="4"] {
+    marker-fill: #FF5C00;
+}
+#crime_updated[severity="3"] {
+    marker-fill: #FFA300;
+}
+#crime_updated[severity="1"] {
+    marker-fill: #FFCC00;
+}
+
