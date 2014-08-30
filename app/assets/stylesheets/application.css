@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: "Helvetica Neue Light", "Helvetica Neue", "Arial", sans-serif;
 }
 
 html {
@@ -41,7 +42,7 @@ html {
 }
 
 .logo {
-    height: 40px;
+    height: 10vh;
 }
 
 .header {
@@ -49,7 +50,7 @@ html {
     z-index: 99;
     align-items: flex-end;
     margin: 0px;
-    /*height: 50px;*/
+
 
 }
 
@@ -91,7 +92,8 @@ html {
 .navigation {
     list-style: none;
     margin: 0;
-
+    height: 4vh;
+    min-height: 4vh;
     background: #51c951;
 
     display: -webkit-box;
@@ -105,12 +107,24 @@ html {
 
 }
 
+a {
+    display:block;
+    height:4vh;
+}
+
+
 .navigation a {
     text-decoration: none;
     display: block;
-    padding: 1em;
+    padding-left: 3vh;
+    padding-right: 0;
+    padding-bottom: 0.5vh;
+    padding-top: 0.5vh;
     color: white;
     margin: 0px;
+    max-height: 3vh;
+    justify-content: space-around;
+
 }
 
 .navigation a:hover {

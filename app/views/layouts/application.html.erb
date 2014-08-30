@@ -4,7 +4,7 @@
   <title>SafeWalk</title>
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQurCEYO2Zcx4GsuHJ7eCdMZOSeG4II0' %>
   <%= javascript_include_tag "http://libs.cartocdn.com/cartodb.js/v3/cartodb.js" %>
-  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -27,8 +27,8 @@
     </nav>
   </header>
 
+    <%= yield %>
 
-  <%= yield %>
 
 
 </div>
