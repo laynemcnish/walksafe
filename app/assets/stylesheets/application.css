@@ -13,7 +13,7 @@ html {
 
 .header, .main, .nav, .aside, .footer {
     flex: 1 100%;
-    margin: 0px;
+    margin: 0;
 }
 
 .wrapper {
@@ -50,15 +50,14 @@ html {
     background-color: #88DAE7;
     z-index: 99;
     align-items: flex-end;
-    margin: 0px;
-
+    margin: 0;
 
 }
 
 .directions-container {
     height: 87vh;
-    border:1px solid #ccc;
-    overflow:auto;
+    border: 1px solid #ccc;
+    overflow: auto;
 
 }
 
@@ -73,7 +72,9 @@ html {
 /* Medium screens */
 @media all and (min-width: 600px) {
     /* We tell both sidebars to share a row */
-    .aside { flex: 1 auto; }
+    .aside {
+        flex: 1 auto;
+    }
 }
 
 /* Large screens */
@@ -81,12 +82,25 @@ html {
     /* We invert order of first sidebar and main
      * And tell the main element to take twice as much width as the other two sidebars
      */
-    .main { flex: 4 0px; }
+    .main {
+        flex: 4 0;
+    }
 
-    .aside-1 { order: 1; }
-    .main    { order: 2; }
-    .aside-2 { order: 3; }
-    .footer  { order: 4; }
+    .aside-1 {
+        order: 1;
+    }
+
+    .main {
+        order: 2;
+    }
+
+    .aside-2 {
+        order: 3;
+    }
+
+    .footer {
+        order: 4;
+    }
 
 }
 
@@ -109,27 +123,26 @@ html {
 }
 
 a {
-    display:block;
-    height:4vh;
+    display: block;
+    height: 4vh;
 }
-
 
 .navigation a {
     text-decoration: none;
     display: block;
     padding-left: 3vh;
-    padding-right: 0;
+    padding-right: 3vh;
     padding-bottom: 0.5vh;
     padding-top: 0.5vh;
     color: white;
-    margin: 0px;
+    margin: 0;
     max-height: 3vh;
     justify-content: space-around;
 
 }
 
 .navigation a:hover {
-    background: darken(deepskyblue, 2%);
+    background: darkgreen;
 }
 
 @media all and (max-width: 800px) {
@@ -149,10 +162,9 @@ a {
     .navigation a {
         text-align: center;
         padding: 10px;
-        border-top: 1px solid rgba(255,255,255,0.3);
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-
 
     .navigation li:last-of-type a {
         border-bottom: none;
@@ -174,11 +186,9 @@ a {
 }
 
 .adp-warnbox {
-     margin: 0px;
+    margin: 0;
     display: none;
 }
-
-
 
 #control {
     /*background: #fff;*/
@@ -212,27 +222,35 @@ li {
 #crime_updated[severity="10"] {
     marker-fill: #850200;
 }
+
 #crime_updated[severity="9"] {
     marker-fill: #B81609;
 }
+
 #crime_updated[severity="8"] {
     marker-fill: #B40903;
 }
+
 #crime_updated[severity="7"] {
     marker-fill: #D6301D;
 }
+
 #crime_updated[severity="6"] {
     marker-fill: #F11810;
 }
+
 #crime_updated[severity="5"] {
     marker-fill: #F84F40;
 }
+
 #crime_updated[severity="4"] {
     marker-fill: #FF5C00;
 }
+
 #crime_updated[severity="3"] {
     marker-fill: #FFA300;
 }
+
 #crime_updated[severity="1"] {
     marker-fill: #FFCC00;
 }
