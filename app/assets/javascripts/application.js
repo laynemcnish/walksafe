@@ -7,6 +7,8 @@ var rendererOptions = {
 };
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
+var rboxer = new RouteBoxer();
+var distance = 0.4; // km
 var map;
 
 function initialize() {
@@ -67,6 +69,12 @@ function calcRoute(event) {
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+//      var path = result.routes[0].overview_path;
+//      var boxes = routeBoxer.box(path, distance);
+//
+//      for (var i = 0; i < boxes.length; i++) {
+//        var bounds = box[i];}
+
       var contentRight = document.getElementById('directions-panel');
       contentRight.style.display = 'block';
       contentRight.style.background = '#f4f4f4';

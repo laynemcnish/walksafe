@@ -4,7 +4,7 @@
 }
 
 html {
-    background: url(http://payload146.cargocollective.com/1/10/343738/5238941/New%20York1_905.jpg) left;
+    background: lightblue;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -26,7 +26,7 @@ html {
 
 .logo {
     height: 12vh;
-    background: url("http://merlyn9.files.wordpress.com/2009/02/teton_panorama003bbframed_1880.jpg");
+    background: lightblue;
 }
 
 .header {
@@ -92,7 +92,8 @@ html {
     margin: 0;
     height: 4vh;
     min-height: 4vh;
-    background: #51c951;
+    background: lightgreen;
+    border: 1px solid grey;
 
     display: -webkit-box;
     display: -moz-box;
