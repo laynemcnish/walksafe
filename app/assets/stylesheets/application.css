@@ -24,24 +24,6 @@ html {
     align-items: flex-start;
 }
 
-.flex-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    width: 100%;
-    align-items: flex-start;
-}
-
-.flex-item {
-    background: #ffffff;
-    padding: 100px;
-    color: black;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 1em;
-    text-align: center;
-}
-
 .logo {
     height: 10vh;
 }
@@ -180,9 +162,6 @@ a {
 
 #directions-panel {
     max-width: 300px;
-}
-
-.adp {
 }
 
 .adp-warnbox {
