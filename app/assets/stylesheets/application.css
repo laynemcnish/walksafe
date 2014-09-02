@@ -25,7 +25,8 @@ html {
 }
 
 .logo {
-    height: 10vh;
+    height: 12vh;
+    background: url("http://merlyn9.files.wordpress.com/2009/02/teton_panorama003bbframed_1880.jpg");
 }
 
 .header {
@@ -37,7 +38,7 @@ html {
 }
 
 .directions-container {
-    height: 87vh;
+    height: 83.75vh;
     border: 1px solid #ccc;
     overflow: auto;
 
@@ -154,7 +155,7 @@ a {
 }
 
 #map-canvas {
-    height: 87vh;
+    height: 84vh;
     width: 100%;
 
     z-index: 0;
@@ -167,6 +168,10 @@ a {
 .adp-warnbox {
     margin: 0;
     display: none;
+}
+
+.adp-legal {
+    font-size: 3px;
 }
 
 #control {

@@ -52,8 +52,8 @@ function initialize() {
 function calcRoute(event) {
   event.preventDefault();
   console.log("hello");
-  var start = document.getElementById('start').value;
-  var end = document.getElementById('end').value;
+  var start = document.getElementById('start').value + "Denver, CO";
+  var end = document.getElementById('end').value + "Denver, CO";
   console.log(start);
   console.log(end);
   var request = {
