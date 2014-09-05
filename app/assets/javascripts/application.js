@@ -6,6 +6,9 @@ var rendererOptions = {draggable: true};
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
+var routeBoxer = new RouteBoxer();
+var distance = 0.1; // km
+var boxpolys = null;
 
 function initialize() {
   var mapOptions = {
@@ -19,20 +22,7 @@ function initialize() {
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
   cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
-    .addTo(map)
-    .on('done', function (layer) {
-      var sublayer = layer.getSubLayer(0);
-      sublayer.on('featureOver', function (e, pos, latlng, data) {
-        cartodb.log.log(e, pos, latlng, data);
-      });
-      sublayer.on('error', function (err) {
-        cartodb.log.log('error: ' + err);
-      });
-    })
-    .on('error', function () {
-      cartodb.log.log("some error occurred");
-    });
-
+    .addTo(map);
 
   var control = document.getElementById('control');
   control.style.display = 'block';
@@ -43,11 +33,9 @@ function initialize() {
 
 function calcRoute(event) {
   event.preventDefault();
-  console.log("hello");
+  clearBoxes();
   var start = document.getElementById('start').value + "Denver, CO";
   var end = document.getElementById('end').value + "Denver, CO";
-  console.log(start);
-  console.log(end);
   var request = {
     origin: start,
     destination: end,
@@ -59,11 +47,39 @@ function calcRoute(event) {
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+      console.log(response.routes[0].legs[0].distance.value);
       var contentRight = document.getElementById('directions-panel');
       contentRight.style.display = 'block';
       contentRight.style.background = '#f4f4f4';
+     
+      var path = response.routes[0].overview_path;
+      var boxes = routeBoxer.box(path, distance);
+      drawBoxes(boxes);
     }
   });
+}
+
+function drawBoxes(boxes) {
+  boxpolys = new Array(boxes.length);
+  for (var i = 0; i < boxes.length; i++) {
+    boxpolys[i] = new google.maps.Rectangle({
+      bounds: boxes[i],
+      fillOpacity: 0,
+      strokeOpacity: 1.0,
+      strokeColor: '#000000',
+      strokeWeight: 1,
+      map: map
+    });
+  }
+}
+
+function clearBoxes() {
+  if (boxpolys != null) {
+    for (var i = 0; i < boxpolys.length; i++) {
+      boxpolys[i].setMap(null);
+    }
+  }
+  boxpolys = null;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
