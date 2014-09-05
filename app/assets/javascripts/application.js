@@ -2,7 +2,8 @@
 //= require jquery_ujs
 //= require_tree .
 
-var directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true });
+var rendererOptions = {draggable: true};
+var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
 

@@ -33,6 +33,7 @@ li {
     border-bottom: 2px solid dimgrey;
     margin: 0;
     height: 5vh;
+    min-height: 5vh;
 }
 
 .logo {
@@ -45,6 +46,12 @@ li {
     border: 1px solid #ccc;
     overflow: auto;
 
+}
+
+#direction-button {
+    font-family: "Helvetica Neue Light", Arial, Sans-Serif;
+    font-size: 15px;
+    width: 100%;
 }
 
 .aside-1, .aside-2 {
