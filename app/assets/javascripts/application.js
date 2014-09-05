@@ -51,11 +51,13 @@ function calcRoute(event) {
       var contentRight = document.getElementById('directions-panel');
       contentRight.style.display = 'block';
       contentRight.style.background = '#f4f4f4';
-     
+
       var path = response.routes[0].overview_path;
       var boxes = routeBoxer.box(path, distance);
       drawBoxes(boxes);
+//      $( "tr:nth-child(3)" ).onClick(console.log("clicked"));
     }
+
   });
 }
 
@@ -81,6 +83,10 @@ function clearBoxes() {
   }
   boxpolys = null;
 }
+
+//google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+//  calcRoute();
+//});
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
