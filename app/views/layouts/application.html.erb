@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SafeWalk</title>
+  <link rel="shortcut icon" href="http://faviconist.com/icons/9453a20f3bd2048d4f94e6456f301c95/favicon.ico" />
+  <title>WalkSafe.ly</title>
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQurCEYO2Zcx4GsuHJ7eCdMZOSeG4II0' %>
   <%= javascript_include_tag 'http://google-maps-utility-library-v3.googlecode.com/svn/trunk/routeboxer/src/RouteBoxer.js' %>
   <%= javascript_include_tag "http://libs.cartocdn.com/cartodb.js/v3/cartodb.js" %>
@@ -14,27 +15,15 @@
 
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
   <meta charset="utf-8">
-
 </head>
 
 <body>
 <div class="wrapper">
   <header class="header">
-    <div class="logo">
-      <h1>SAFE WALK</h1>
-    </div>
-    <nav class="navigation">
-      <li class="nav-li"><%= link_to "Home", root_path %></li>
-    </nav>
+<h3 class="logo"><strong>WalkSafe.ly</strong></h3>
   </header>
-
-    <%= yield %>
-
-
-
+  <%= yield %>
 </div>
-
-
 </body>
 </html>
 

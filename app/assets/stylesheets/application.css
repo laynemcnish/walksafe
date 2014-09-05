@@ -4,7 +4,7 @@
 }
 
 html {
-    background: lightblue;
+    background: url("http://cdn3.slike.hr/wp-content/uploads/sites/24/2013/08/Blue-Clean-iOS7_iPad00-Max-Kas.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -24,21 +24,24 @@ html {
     align-items: flex-start;
 }
 
-.logo {
-    height: 12vh;
-    background: lightblue;
+li {
+    list-style: none;
+    display: inline;
 }
 
 .header {
-    background-color: #88DAE7;
-    z-index: 99;
-    align-items: flex-end;
+    border-bottom: 2px solid dimgrey;
     margin: 0;
+    height: 5vh;
+}
 
+.logo {
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .directions-container {
-    height: 83.75vh;
+    height: 94.5vh;
     border: 1px solid #ccc;
     overflow: auto;
 
@@ -46,10 +49,6 @@ html {
 
 .aside-1, .aside-2 {
     background: #bebec1
-}
-
-.footer {
-    align: flex-end;
 }
 
 /* Medium screens */
@@ -87,76 +86,8 @@ html {
 
 }
 
-.navigation {
-    list-style: none;
-    margin: 0;
-    height: 4vh;
-    min-height: 4vh;
-    background: lightgreen;
-    border: 1px solid grey;
-
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-
-    -webkit-flex-flow: row wrap;
-    justify-content: flex-start;
-
-}
-
-a {
-    display: block;
-    height: 4vh;
-}
-
-.navigation a {
-    text-decoration: none;
-    display: block;
-    padding-left: 3vh;
-    padding-right: 3vh;
-    padding-bottom: 0.5vh;
-    padding-top: 0.5vh;
-    color: white;
-    margin: 0;
-    max-height: 3vh;
-    justify-content: space-around;
-
-}
-
-.navigation a:hover {
-    background: darkgreen;
-}
-
-@media all and (max-width: 800px) {
-    .navigation {
-        /*justify-content: space-around;*/
-    }
-}
-
-@media all and (max-width: 600px) {
-    .navigation {
-        -webkit-flex-flow: column wrap;
-        flex-flow: column wrap;
-        padding: 0;
-        margin: 0;
-    }
-
-    .navigation a {
-        text-align: center;
-        padding: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .navigation li:last-of-type a {
-        border-bottom: none;
-    }
-}
-
 #map-canvas {
-    height: 84vh;
+    height: 94.5vh;
     width: 100%;
 
     z-index: 0;
@@ -172,7 +103,7 @@ a {
 }
 
 .adp-legal {
-    font-size: 3px;
+    font-size: 10px;
 }
 
 #control {
@@ -184,10 +115,6 @@ a {
     box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
 }
 
-li {
-    list-style: none;
-    display: block;
-}
 
 #crime_updated {
     marker-fill-opacity: 0.5;
