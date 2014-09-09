@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-var rendererOptions = {draggable: true};
+var rendererOptions = {draggable: false};
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
@@ -14,7 +14,6 @@ function initialize() {
   var mapOptions = {
     zoom: 13,
     center: new google.maps.LatLng(39.7386033, -104.935449),
-    draggable: true
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -93,12 +92,6 @@ function clearBoxes() {
   boxpolys = null;
 }
 
-//google.maps.event.addListener(dirRenderer, 'routeindex_changed',
-//  function() {
-//    var path = response.routes[0].overview_path;
-//    var boxes = routeBoxer.box(path, distance);
-//    drawBoxes(boxes);
-//  });
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
