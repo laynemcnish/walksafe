@@ -47,7 +47,6 @@ function calcRoute(event) {
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
-      console.log(response.routes[0].legs[0].distance.value);
       var contentRight = document.getElementById('directions-panel');
       contentRight.style.display = 'block';
       contentRight.style.background = '#f4f4f4';
@@ -55,7 +54,17 @@ function calcRoute(event) {
       var path = response.routes[0].overview_path;
       var boxes = routeBoxer.box(path, distance);
       drawBoxes(boxes);
-//      $( "tr:nth-child(3)" ).onClick(console.log("clicked"));
+
+      google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
+        clearBoxes();
+        var current_route_index = this.getRouteIndex();
+        var path2 = response.routes[current_route_index].overview_path;
+        var boxes2 = routeBoxer.box(path2, distance);
+        drawBoxes(boxes2);
+        console.log(current_route_index);
+        console.log("route changed");
+      });
+
     }
 
   });
@@ -84,9 +93,13 @@ function clearBoxes() {
   boxpolys = null;
 }
 
-//google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-//  calcRoute();
-//});
+//google.maps.event.addListener(dirRenderer, 'routeindex_changed',
+//  function() {
+//    var path = response.routes[0].overview_path;
+//    var boxes = routeBoxer.box(path, distance);
+//    drawBoxes(boxes);
+//  });
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
