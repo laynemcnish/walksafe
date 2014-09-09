@@ -46,6 +46,7 @@ function calcRoute(event) {
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+      clearBoxes();
       var contentRight = document.getElementById('directions-panel');
       contentRight.style.display = 'block';
       contentRight.style.background = '#f4f4f4';
@@ -60,8 +61,6 @@ function calcRoute(event) {
         var path2 = response.routes[current_route_index].overview_path;
         var boxes2 = routeBoxer.box(path2, distance);
         drawBoxes(boxes2);
-        console.log(current_route_index);
-        console.log("route changed");
       });
 
     }
