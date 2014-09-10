@@ -83,26 +83,19 @@ function drawBoxes(boxes) {
         strokeWeight: 1,
         map: map
       });
-
       var northeast = boxes[i].getNorthEast();
       var southwest = boxes[i].getSouthWest();
-
-      console.log("NE corner:" + northeast);
-      console.log("SW corner:" + southwest);
-
-
       $.each(data["rows"], function (i, crime_point) {
         var lat = crime_point.geo_lat;
         var lon = crime_point.geo_lon;
         if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["B"] && lon < northeast["B"]) {
           sev_count = parseInt(crime_point.severity);
-          console.log(crime_point.severity);
           count += sev_count;
         }
-
       });
-      console.log(count);
     }
+    $('#severity_score').replaceWith('<div id="severity_score"><p>Crime Score: ' + count + '</p></div>');
+    console.log(count);
   });
 }
 
