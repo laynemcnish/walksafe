@@ -24,12 +24,21 @@ html {
     align-items: flex-start;
 }
 
+div#legend {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 300px;
+    font-size: 8px;
+}
+
+
+
 #severity_score {
     position: absolute;
     top: 10px;
     right: 60px;
 }
-
 
 li {
     list-style: none;
@@ -128,7 +137,6 @@ li {
     border: 1px solid #ccc;
     box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
 }
-
 
 #crime_updated {
     marker-fill-opacity: 0.5;
