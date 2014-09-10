@@ -6,9 +6,8 @@ var rendererOptions = {draggable: false};
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
-var routeBoxer = new RouteBoxer();
 var distance = 0.1; // km
-var boxpolys = null;
+var boxpolys = [];
 
 function initialize() {
   var mapOptions = {
@@ -34,7 +33,6 @@ function initialize() {
 
 function calcRoute(event) {
   event.preventDefault();
-  clearBoxes();
   var start = document.getElementById('start').value + "Denver, CO";
   var end = document.getElementById('end').value + "Denver, CO";
   var request = {
@@ -45,19 +43,23 @@ function calcRoute(event) {
 
   };
 
+  google.maps.event.clearListeners(directionsDisplay, 'routeindex_changed');
+
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
+      console.log("route called");
       directionsDisplay.setDirections(response);
-      clearBoxes();
       var contentRight = document.getElementById('directions-panel');
       contentRight.style.display = 'block';
       contentRight.style.background = '#f4f4f4';
 
       var path = response.routes[0].overview_path;
+      var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
+      console.log("after route called:", path);
       drawBoxes(boxes);
-
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
+        console.error("this gets called a ton");
         var current_route_index = this.getRouteIndex();
         var path2 = response.routes[current_route_index].overview_path;
         var boxes2 = routeBoxer.box(path2, distance);
@@ -70,13 +72,15 @@ function calcRoute(event) {
 }
 
 function drawBoxes(boxes) {
-  clearBoxes();
-  boxpolys = new Array(boxes.length);
+  console.log("drawboxes activated");
+  //boxpolys = new Array(boxes.length);
+  console.log("boxes", boxes);
   var count = 0;
   var crime_count = 0;
   var promise = $.getJSON("http://lmcnish14.cartodb.com/api/v2/sql?q=SELECT geo_lon, geo_lat, severity FROM public.crime_updated");
+  clearBoxes();
   promise.then(function (data) {
-    cachedGeoJson = data;
+//    cachedGeoJson = data;
     for (var i = 0; i < boxes.length; i++) {
       boxpolys[i] = new google.maps.Rectangle({
         bounds: boxes[i],
@@ -95,24 +99,26 @@ function drawBoxes(boxes) {
           crime_count += 1;
           sev_count = parseInt(crime_point.severity);
           count += sev_count;
+
         }
       });
     }
-    var avg_crime = parseInt(count/crime_count);
+    var avg_crime = parseInt(count / crime_count);
     $('#severity_score').replaceWith('<div id="severity_score"><p><strong>Number of Crimes: ' + crime_count + '  |   Avg Score: ' + avg_crime + '  |  Total Score: ' + count + '</strong></p></div>');
     console.log(count);
   });
 }
 
 function clearBoxes() {
-  if (boxpolys) {
-    for (var i = 0; i < boxpolys.length; i++) {
-      boxpolys[i].setMap();
-    }
-    boxpolys.length = 0;
+  console.log("clearBoxes activated");
+  for (var i = 0; i < boxpolys.length; i++) {
+    boxpolys[i].setMap(null);
   }
+
+  boxpolys = [];
 }
 
+console.log('Boxpolys:', boxpolys);
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
