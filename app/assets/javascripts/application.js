@@ -28,6 +28,8 @@ function initialize() {
   map.controls.push(control);
 
   $("#control input[type=submit]").on('click', calcRoute);
+
+
 }
 
 function calcRoute(event) {
@@ -56,7 +58,6 @@ function calcRoute(event) {
       drawBoxes(boxes);
 
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
-        clearBoxes();
         var current_route_index = this.getRouteIndex();
         var path2 = response.routes[current_route_index].overview_path;
         var boxes2 = routeBoxer.box(path2, distance);
@@ -69,6 +70,7 @@ function calcRoute(event) {
 }
 
 function drawBoxes(boxes) {
+  clearBoxes();
   boxpolys = new Array(boxes.length);
   var count = 0;
   var promise = $.getJSON("http://lmcnish14.cartodb.com/api/v2/sql?q=SELECT geo_lon, geo_lat, severity FROM public.crime_updated");
