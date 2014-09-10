@@ -7,7 +7,7 @@ var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
 var routeBoxer = new RouteBoxer();
-var distance = 0.07; // km
+var distance = 0.1; // km
 var boxpolys = null;
 
 function initialize() {
@@ -73,6 +73,7 @@ function drawBoxes(boxes) {
   clearBoxes();
   boxpolys = new Array(boxes.length);
   var count = 0;
+  var crime_count = 0;
   var promise = $.getJSON("http://lmcnish14.cartodb.com/api/v2/sql?q=SELECT geo_lon, geo_lat, severity FROM public.crime_updated");
   promise.then(function (data) {
     cachedGeoJson = data;
@@ -91,12 +92,14 @@ function drawBoxes(boxes) {
         var lat = crime_point.geo_lat;
         var lon = crime_point.geo_lon;
         if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["B"] && lon < northeast["B"]) {
+          crime_count += 1;
           sev_count = parseInt(crime_point.severity);
           count += sev_count;
         }
       });
     }
-    $('#severity_score').replaceWith('<div id="severity_score"><p><strong>Crime Score: ' + count + '</strong></p></div>');
+    var avg_crime = parseInt(count/crime_count);
+    $('#severity_score').replaceWith('<div id="severity_score"><p><strong>Number of Crimes: ' + crime_count + '  |   Avg Score: ' + avg_crime + '  |  Total Score: ' + count + '</strong></p></div>');
     console.log(count);
   });
 }
