@@ -94,7 +94,7 @@ function drawBoxes(boxes) {
         }
       });
     }
-    $('#severity_score').replaceWith('<div id="severity_score"><p>Crime Score: ' + count + '</p></div>');
+    $('#severity_score').replaceWith('<div id="severity_score"><p><strong>Crime Score: ' + count + '</strong></p></div>');
     console.log(count);
   });
 }
