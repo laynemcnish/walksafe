@@ -7,13 +7,13 @@ var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
 var routeBoxer = new RouteBoxer();
-var distance = 0.1; // km
+var distance = 0.07; // km
 var boxpolys = null;
 
 function initialize() {
   var mapOptions = {
     zoom: 13,
-    center: new google.maps.LatLng(39.7386033, -104.935449),
+    center: new google.maps.LatLng(39.7386033, -104.935449)
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -70,29 +70,51 @@ function calcRoute(event) {
 
 function drawBoxes(boxes) {
   boxpolys = new Array(boxes.length);
-  for (var i = 0; i < boxes.length; i++) {
-    boxpolys[i] = new google.maps.Rectangle({
-      bounds: boxes[i],
-      fillOpacity: 0,
-      strokeOpacity: 1.0,
-      strokeColor: '#000000',
-      strokeWeight: 1,
-      map: map
-    });
-  }
+  var count = 0;
+  var promise = $.getJSON("http://lmcnish14.cartodb.com/api/v2/sql?q=SELECT geo_lon, geo_lat, severity FROM public.crime_updated");
+  promise.then(function (data) {
+    cachedGeoJson = data;
+    for (var i = 0; i < boxes.length; i++) {
+      boxpolys[i] = new google.maps.Rectangle({
+        bounds: boxes[i],
+        fillOpacity: 0,
+        strokeOpacity: 1.0,
+        strokeColor: '#000000',
+        strokeWeight: 1,
+        map: map
+      });
+
+      var northeast = boxes[i].getNorthEast();
+      var southwest = boxes[i].getSouthWest();
+
+      console.log("NE corner:" + northeast);
+      console.log("SW corner:" + southwest);
+
+
+      $.each(data["rows"], function (i, crime_point) {
+        var lat = crime_point.geo_lat;
+        var lon = crime_point.geo_lon;
+        if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["B"] && lon < northeast["B"]) {
+          sev_count = parseInt(crime_point.severity);
+          console.log(crime_point.severity);
+          count += sev_count;
+        }
+
+      });
+      console.log(count);
+    }
+  });
 }
 
 function clearBoxes() {
-  if (boxpolys != null) {
+  if (boxpolys) {
     for (var i = 0; i < boxpolys.length; i++) {
-      boxpolys[i].setMap(null);
+      boxpolys[i].setMap();
     }
+    boxpolys.length = 0;
   }
-  boxpolys = null;
 }
 
 
-
 google.maps.event.addDomListener(window, 'load', initialize);
-
 
