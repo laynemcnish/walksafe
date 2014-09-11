@@ -20,8 +20,8 @@ function initialize() {
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
 //  ***************CRIME POINT MAP LAYER ************************
-//  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
-//    .addTo(map);
+  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
+    .addTo(map);
 //  ************************************************************
 
   var control = document.getElementById('control');
@@ -84,11 +84,11 @@ function drawBoxes(boxes) {
     for (var i = 0; i < boxes.length; i++) {
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
-//        bounds: boxes[i],
-//        fillOpacity: 0,
-//        strokeOpacity: 1.0,
-//        strokeColor: '#000000',
-//        strokeWeight: 1,
+        bounds: boxes[i],
+        fillOpacity: 0,
+        strokeOpacity: 1.0,
+        strokeColor: '#000000',
+        strokeWeight: 1,
 //        *********************************************************************
         map: map
       });
