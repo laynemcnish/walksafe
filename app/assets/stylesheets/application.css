@@ -24,14 +24,18 @@ html {
     align-items: flex-start;
 }
 
+/************************LEGEND************************/
+
 div#legend {
     position: absolute;
     bottom: 0px;
     right: 0px;
     width: 300px;
     font-size: 8px;
+    display: none;
 }
 
+/******************************************************/
 
 
 #severity_score {

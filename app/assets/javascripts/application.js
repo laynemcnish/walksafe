@@ -19,8 +19,10 @@ function initialize() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
-    .addTo(map);
+//  ***************CRIME POINT MAP LAYER ************************
+//  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
+//    .addTo(map);
+//  ************************************************************
 
   var control = document.getElementById('control');
   control.style.display = 'block';
@@ -73,21 +75,21 @@ function calcRoute(event) {
 
 function drawBoxes(boxes) {
   console.log("drawboxes activated");
-  //boxpolys = new Array(boxes.length);
   console.log("boxes", boxes);
   var count = 0;
   var crime_count = 0;
   var promise = $.getJSON("http://lmcnish14.cartodb.com/api/v2/sql?q=SELECT geo_lon, geo_lat, severity FROM public.crime_updated");
   clearBoxes();
   promise.then(function (data) {
-//    cachedGeoJson = data;
     for (var i = 0; i < boxes.length; i++) {
       boxpolys[i] = new google.maps.Rectangle({
-        bounds: boxes[i],
-        fillOpacity: 0,
-        strokeOpacity: 1.0,
-        strokeColor: '#000000',
-        strokeWeight: 1,
+//       ************* BOX BORDERS ********************************************
+//        bounds: boxes[i],
+//        fillOpacity: 0,
+//        strokeOpacity: 1.0,
+//        strokeColor: '#000000',
+//        strokeWeight: 1,
+//        *********************************************************************
         map: map
       });
       var northeast = boxes[i].getNorthEast();
