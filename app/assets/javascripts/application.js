@@ -63,11 +63,11 @@ function calcRoute(event) {
         // Places request
         var place_request = {
           bounds: bounds,
-          types: [('hospital' && 'doctor'), 'police']
+          types: ['hospital', 'police']
         };
         service = new google.maps.places.PlacesService(map);
         service.search(place_request, callback);
-      };
+      }
       console.log("after route called:", path);
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
@@ -153,12 +153,13 @@ function addResult(place) {
 }
 
 function createMarker(place) {
+console.log(place.name)
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
 
   });
-  console.log(place);
+
 
 }
 
