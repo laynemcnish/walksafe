@@ -5,9 +5,11 @@
 var rendererOptions = {draggable: false};
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
+var infowindow = new google.maps.InfoWindow();
 var map;
 var distance = 0.1; // km
 var boxpolys = [];
+var markers = [];
 
 function initialize() {
   var mapOptions = {
@@ -45,6 +47,7 @@ function calcRoute(event) {
 
   };
 
+
   google.maps.event.clearListeners(directionsDisplay, 'routeindex_changed');
 
   directionsService.route(request, function (response, status) {
@@ -58,20 +61,10 @@ function calcRoute(event) {
       var path = response.routes[0].overview_path;
       var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
-      for (var i = 0; i < boxes.length; i++) {
-        var bounds = boxes[i];
-        // Places request
-        var place_request = {
-          bounds: bounds,
-          types: ['hospital', 'police']
-        };
-        service = new google.maps.places.PlacesService(map);
-        service.search(place_request, callback);
-      }
+
       console.log("after route called:", path);
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
-        console.error("this gets called a ton");
         var current_route_index = this.getRouteIndex();
         var path2 = response.routes[current_route_index].overview_path;
         var boxes2 = routeBoxer.box(path2, distance);
@@ -90,8 +83,19 @@ function drawBoxes(boxes) {
   var crime_count = 0;
   var promise = $.getJSON("http://lmcnish14.cartodb.com/api/v2/sql?q=SELECT geo_lon, geo_lat, severity FROM public.crime_updated");
   clearBoxes();
+  deleteMarkers();
+
+
   promise.then(function (data) {
     for (var i = 0; i < boxes.length; i++) {
+      var bounds = boxes[i];
+      // Places request
+      var place_request = {
+        bounds: bounds,
+        types: ['hospital', 'police']
+      };
+      service = new google.maps.places.PlacesService(map);
+      service.search(place_request, callback);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
 //        bounds: boxes[i],
@@ -125,19 +129,21 @@ function clearBoxes() {
   console.log("clearBoxes activated");
   for (var i = 0; i < boxpolys.length; i++) {
     boxpolys[i].setMap(null);
+
   }
 
   boxpolys = [];
 }
 
+
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     var i = 0;
 
-    while(i < results.length) {
+    while (i < results.length) {
       createMarker(results[i]);
       var request = { reference: results[i].reference };
-      service.getDetails(request, function(details, status2) {
+      service.getDetails(request, function (details, status2) {
         //if(status2 == google.maps.places.PlacesServiceStatus.OK)
         addResult(details);
       });
@@ -147,21 +153,32 @@ function callback(results, status) {
 }
 
 function addResult(place) {
-  if(place != null) {
+  if (place != null) {
     // You should now have a "place" object here that has address, name, URL, etc...
   }
 }
 
 function createMarker(place) {
-console.log(place.name)
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
 
   });
+  markers.push(marker);
+  console.log(markers);
 
 
 }
+
+function deleteMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+
+  }
+
+  markers = [];
+}
+
 
 
 console.log('Boxpolys:', boxpolys);
