@@ -58,6 +58,16 @@ function calcRoute(event) {
       var path = response.routes[0].overview_path;
       var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
+      for (var i = 0; i < boxes.length; i++) {
+        var bounds = boxes[i];
+        // Places request
+        var place_request = {
+          bounds: bounds,
+          types: [('hospital' && 'doctor'), 'police']
+        };
+        service = new google.maps.places.PlacesService(map);
+        service.search(place_request, callback);
+      };
       console.log("after route called:", path);
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
@@ -119,6 +129,39 @@ function clearBoxes() {
 
   boxpolys = [];
 }
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    var i = 0;
+
+    while(i < results.length) {
+      createMarker(results[i]);
+      var request = { reference: results[i].reference };
+      service.getDetails(request, function(details, status2) {
+        //if(status2 == google.maps.places.PlacesServiceStatus.OK)
+        addResult(details);
+      });
+      i++;
+    }
+  }
+}
+
+function addResult(place) {
+  if(place != null) {
+    // You should now have a "place" object here that has address, name, URL, etc...
+  }
+}
+
+function createMarker(place) {
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+
+  });
+  console.log(place);
+
+}
+
 
 console.log('Boxpolys:', boxpolys);
 
