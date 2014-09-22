@@ -10,3 +10,5 @@ Implemented with Ruby on Rails, JavaScript, jQuery, PostgreSQL, Google Maps Java
 
 Features currently under development include real time GPS tracking, a customizable user interface, a dead man’s switch, shareable routes, and a native mobile application.
 
+Currently, the only supported city is Denver, CO but I will add other metropolitan areas as soon as possible!
+
