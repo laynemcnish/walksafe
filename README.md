@@ -1,29 +1,12 @@
-<h1>Safe Walk</h1>
+<h1>WalkSafe.ly</h1>
+
+www.walksafe.ly
 
 <h3>About</h3>
 
-Safe Walk is an app designed to help predict the safest walking route.
+Web application that helps pedestrians find the safest walking routes using governmental crime data, business hours and proximity to safe locations including hospitals and police stations.  
 
-The app will pull in data from the Google maps, directions and places APIs to find the quickest way along a route with businesses that are open. 
+Implemented with Ruby on Rails, JavaScript, jQuery, PostgreSQL, Google Maps JavaScript API v3 and CartoDB.  
 
-It will also incorporate a heatmap from Trulia's API with crime data from Spot Crime and Crime Reports.
+Features currently under development include real time GPS tracking, a customizable user interface, a dead man’s switch, shareable routes, and a native mobile application.
 
-<h3>Phase 1</h3>
-
-The first phase will be to create a draggable route to let users alter their route to the safest route as shown with open businesses, nearby police stations and statistically low crime activity.
-
-<h3>Phase 2</h3>
-
-The second phase will automatically recommend the safest route to take.  
-
-It will also include the addition of a new feature that allows the user to text or email their location to a friend or family member to show when they leave, where they're going and ability to check in when they've arrived to show that they've gotten to their final destination safely.
-
-<h3>Phase 3 - Optional</h3>
-
-The last (optional) phase will move the app from a strictly web-based app to a mobile app.  I will determine later if this will be feasible in the time I have left at gSchool once I have gotten through the first two phases.
-
-<h3>NOTE</h3>
-Until I fix the register/login issue, first click log out then use:
-
-Username: user
-Password: user
