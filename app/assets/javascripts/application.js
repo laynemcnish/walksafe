@@ -89,13 +89,30 @@ function drawBoxes(boxes) {
   promise.then(function (data) {
     for (var i = 0; i < boxes.length; i++) {
       var bounds = boxes[i];
-      // Places request
       var place_request = {
         bounds: bounds,
-        types: ['hospital', 'police']
+        types: ['fire_station'],
+        keyword: 'fire station'
       };
+
+      var place_request2 = {
+        bounds: bounds,
+        keyword: "health",
+        types: ['hospital']
+      };
+
+      var place_request3 = {
+        bounds: bounds,
+        keyword: 'police',
+        types: ['police']
+      };
+
       service = new google.maps.places.PlacesService(map);
       service.search(place_request, callback);
+      service2 = new google.maps.places.PlacesService(map);
+      service2.search(place_request2, callback);
+      service3 = new google.maps.places.PlacesService(map);
+      service3.search(place_request3, callback);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
 //        bounds: boxes[i],
@@ -154,18 +171,25 @@ function callback(results, status) {
 
 function addResult(place) {
   if (place != null) {
+
     // You should now have a "place" object here that has address, name, URL, etc...
   }
 }
 
 function createMarker(place) {
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
+  var str = place.name;
+  if (str.indexOf("Green") == -1 && str.indexOf("Medicinals") == -1 && str.indexOf("Herban") == -1 && str.indexOf("Dispensary") == -1 && str.indexOf("Paternity") == -1 && str.indexOf("Mining") == -1 && str.indexOf("Plastic") == -1 && str.indexOf("Dentist") == -1 && str.indexOf("Dermatology") == -1 && str.indexOf("Marijuana") == -1)
+  {
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
 
-  });
-  markers.push(marker);
-  console.log(markers);
+    });
+    markers.push(marker);
+    console.log(place.name);
+  }
+
+
 
 
 }
