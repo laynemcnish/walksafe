@@ -37,8 +37,8 @@ function initialize() {
 
 function calcRoute(event) {
   event.preventDefault();
-  var start = document.getElementById('start').value + "Denver, CO";
-  var end = document.getElementById('end').value + "Denver, CO";
+  var start = document.getElementById('start').value;
+  var end = document.getElementById('end').value;
   var request = {
     origin: start,
     destination: end,
@@ -104,11 +104,11 @@ function drawBoxes(boxes) {
       };
 
       service = new google.maps.places.PlacesService(map);
-      service.search(place_request, callback);
+      service.nearbySearch(place_request, callback);
       service2 = new google.maps.places.PlacesService(map);
-      service2.search(place_request2, callback);
+      service2.nearbySearch(place_request2, callback);
       service3 = new google.maps.places.PlacesService(map);
-      service3.search(place_request3, callback);
+      service3.nearbySearch(place_request3, callback);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
         bounds: boxes[i],
