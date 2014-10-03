@@ -11,6 +11,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'launchy'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem "rspec-rails", "3.0.1"

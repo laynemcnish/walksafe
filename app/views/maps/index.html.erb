@@ -1,89 +1,58 @@
-<article class="main">
-  <div id="map-canvas"></div>
+<div class="container-fluid">
+  <div class="row hidden-md hidden-lg">
+    <div class="col-xs-12">
+      <ul class="nav nav-tabs" role="tablist" id="myTab">
+        <li class="active"><a href="#directions-pane" role="tab" data-toggle="tab">Directions</a></li>
+        <li><a href="#map-pane" role="tab" data-toggle="tab">Map</a></li>
+      </ul>
+    </div>
 
-  <div id="legend" class='cartodb-legend category'>
-    <ul>
-      <li>
-        <div class="bullet" style="background: #850200"></div>
-        10 - Homicide
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #B81609"></div>
-        9 - Aggravated Assault or Felony with Weapon
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #B40903"></div>
-        8 - Kidnapping or Rape
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #D6301D"></div>
-        7 - Assault
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #F11810"></div>
-        6 - Purse Snatch with Force
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #F84F40"></div>
-        5 - Street Robbery or Sexual Assault (Non-Rape)
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #FF5C00"></div>
-        4 - Sexual Harassment or Threat to Injure
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #FFA300"></div>
-        3 - Harassment or Indecent Exposure
-      </li>
-      <br>
-      <li>
-        <div class="bullet" style="background: #FFCC00"></div>
-        1-2 - Pickpocket or Purse Snatch without Force
-      </li>
-    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="directions-pane">
+        <div class="directions-container col-xs-12 col-sm-12">
+          <aside class="aside-1">
+            <div id="control">
+              <table>
+                <form>
+                  <tr>
+                    <td>
+                      <label for="start">Enter your location:</label></td>
+                    <td>
+                      <input type="text" name="start" id="start"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="end">Destination:</label></td>
+                    <td>
+                      <input type="text" name="end" id="end"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p></p>
+                    </td>
+                    <td>
+                      <input id="direction-button" type="submit" value="Get directions"/>
+                    </td>
+                  </tr>
+                </form>
+              </table>
+            </div>
+            <div id="directions-panel"></div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="map-pane">
+        <div id="map-canvas" class="reset-box-sizing"></div>
+
+      </div>
+    </div>
   </div>
 
-</article>
-<div class="directions-container">
-  <aside class="aside-1">
-    <div id="control">
-      <table>
-        <form>
-          <tr>
-            <td>
-              <label for="start">Enter your location:</label></td>
-            <td>
-              <input type="text" name="start" id="start"/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="end">Destination:</label></td>
-            <td>
-              <input type="text" name="end" id="end"/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p></p>
-            </td>
-            <td>
-              <input id="direction-button" type="submit" value="Get directions"/>
-            </td>
-          </tr>
-        </form>
-      </table>
-    </div>
-    <div id="directions-panel"></div>
-  </aside>
 </div>
+
 
 
 

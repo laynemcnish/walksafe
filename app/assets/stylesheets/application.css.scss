@@ -1,0 +1,139 @@
+
+* {
+}
+
+html, body, .container, .tab-content, .tab-pane  {
+  height: 100%;
+}
+
+.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+}
+
+
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+.header {
+
+}
+
+
+.directions-container {
+//    height: 94.5vh;
+    border: 1px solid #ccc;
+//    overflow: auto;
+
+}
+
+#direction-button {
+    font-family: "Helvetica Neue Light", Arial, Sans-Serif;
+    font-size: 15px;
+    width: 100%;
+}
+
+
+#map-canvas {
+ min-height: 480px;
+ min-width: 300px;
+  max-width:none;
+}
+
+#map-canvas img {
+ max-width: none;
+}
+
+#map-canvas label {
+  width: auto; display:inline;
+}
+
+#directions-panel {
+//    max-width: 300px;
+}
+
+.adp-warnbox {
+    margin: 0;
+    display: none;
+}
+
+.adp-legal {
+    font-size: 10px;
+}
+
+#control {
+//    padding: 5px;
+//    font-size: 14px;
+//    font-family: Arial, sans-serif;
+//    border: 1px solid #ccc;
+//    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+}
+
+
+#severity_score {
+  //    position: absolute;
+  //    top: 10px;
+  //    right: 60px;
+}
+
+
+
+//
+//
+//#crime_updated {
+//    marker-fill-opacity: 0.5;
+//    marker-line-color: #FFF;
+//    marker-line-width: 1.5;
+//    marker-line-opacity: 1;
+//    marker-placement: point;
+//    marker-type: ellipse;
+//    marker-width: 10;
+//    marker-allow-overlap: true;
+//}
+//
+//.cartodb-popup {
+//    display: none;
+//}
+//
+//#crime_updated[severity="10"] {
+//    marker-fill: #850200;
+//}
+//
+//#crime_updated[severity="9"] {
+//    marker-fill: #B81609;
+//}
+//
+//#crime_updated[severity="8"] {
+//    marker-fill: #B40903;
+//}
+//
+//#crime_updated[severity="7"] {
+//    marker-fill: #D6301D;
+//}
+//
+//#crime_updated[severity="6"] {
+//    marker-fill: #F11810;
+//}
+//
+//#crime_updated[severity="5"] {
+//    marker-fill: #F84F40;
+//}
+//
+//#crime_updated[severity="4"] {
+//    marker-fill: #FF5C00;
+//}
+//
+//#crime_updated[severity="3"] {
+//    marker-fill: #FFA300;
+//}
+//
+//#crime_updated[severity="1"] {
+//    marker-fill: #FFCC00;
+//}

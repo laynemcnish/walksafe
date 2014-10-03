@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require_tree .
 
 var rendererOptions = {draggable: false};
@@ -11,6 +12,17 @@ var boxpolys = [];
 var markers = [];
 
 function initialize() {
+
+
+//  $('a[href="#map-pane"]').click(function(){
+//    google.maps.event.trigger(map,'resize');
+//
+//    console.log("clicked")
+//  });
+//
+//  $('a[href="#directions-pane"]').tab('show');
+
+
   var mapOptions = {
     zoom: 13,
     center: new google.maps.LatLng(39.7386033, -104.935449)
@@ -21,24 +33,25 @@ function initialize() {
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
 //  ***************CRIME POINT MAP LAYER ************************
-  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
-    .addTo(map);
+//  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
+//    .addTo(map);
 //  ************************************************************
 
   var control = document.getElementById('control');
   control.style.display = 'block';
   map.controls.push(control);
 
+  google.maps.event.trigger(map,'resize');
+
 
   $("#control input[type=submit]").on('click', calcRoute);
-
 
 }
 
 function calcRoute(event) {
   event.preventDefault();
-  var start = document.getElementById('start').value;
-  var end = document.getElementById('end').value;
+  var start = document.getElementById('start').value + "Denver, CO";
+  var end = document.getElementById('end').value + "Denver, CO";
   var request = {
     origin: start,
     destination: end,
@@ -104,18 +117,18 @@ function drawBoxes(boxes) {
       };
 
       service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(place_request, callback);
+      service.search(place_request, callback);
       service2 = new google.maps.places.PlacesService(map);
-      service2.nearbySearch(place_request2, callback);
+      service2.search(place_request2, callback);
       service3 = new google.maps.places.PlacesService(map);
-      service3.nearbySearch(place_request3, callback);
+      service3.search(place_request3, callback);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
-        bounds: boxes[i],
-        fillOpacity: 0,
-        strokeOpacity: 1.0,
-        strokeColor: '#000000',
-        strokeWeight: 1,
+//        bounds: boxes[i],
+//        fillOpacity: 0,
+//        strokeOpacity: 1.0,
+//        strokeColor: '#000000',
+//        strokeWeight: 1,
 //        *********************************************************************
         map: map
       });
@@ -199,6 +212,23 @@ function deleteMarkers() {
 
   markers = [];
 }
+
+$('#myTab a:last').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  console.log("clicked")
+})
+
+$(document).ready(function () {
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+    map.setZoom( map.getZoom() );
+    console.log(map.getZoom())
+  });
+});
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
