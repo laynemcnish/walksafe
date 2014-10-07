@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="shortcut icon" href="http://faviconist.com/icons/9453a20f3bd2048d4f94e6456f301c95/favicon.ico" />
+  <link rel="shortcut icon" href="http://faviconist.com/icons/9453a20f3bd2048d4f94e6456f301c95/favicon.ico"/>
   <title>WalkSafe.ly</title>
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQurCEYO2Zcx4GsuHJ7eCdMZOSeG4II0&libraries=places' %>
   <%= javascript_include_tag 'http://google-maps-utility-library-v3.googlecode.com/svn/trunk/routeboxer/src/RouteBoxer.js' %>
@@ -22,10 +22,21 @@
 </head>
 
 <body>
+<div class="container-fluid">
+  <div class="row col-sm-12 col-md-12 col-lg-12 col-xs-12">
+    <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+      <h3><strong>WalkSafe.ly</strong></h3>
+    </div>
+    <div id="severity_score"></div>
 
-  <h3><strong>WalkSafe.ly</strong></h3>
 
-  <%= yield %>
+  </div>
+
+
+</div>
+
+
+<%= yield %>
 
 
 </body>

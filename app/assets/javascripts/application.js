@@ -13,16 +13,6 @@ var markers = [];
 
 function initialize() {
 
-
-//  $('a[href="#map-pane"]').click(function(){
-//    google.maps.event.trigger(map,'resize');
-//
-//    console.log("clicked")
-//  });
-//
-//  $('a[href="#directions-pane"]').tab('show');
-
-
   var mapOptions = {
     zoom: 13,
     center: new google.maps.LatLng(39.7386033, -104.935449)
@@ -41,7 +31,7 @@ function initialize() {
   control.style.display = 'block';
   map.controls.push(control);
 
-  google.maps.event.trigger(map,'resize');
+  google.maps.event.trigger(map, 'resize');
 
 
   $("#control input[type=submit]").on('click', calcRoute);
@@ -59,7 +49,6 @@ function calcRoute(event) {
     provideRouteAlternatives: true
 
   };
-
 
   google.maps.event.clearListeners(directionsDisplay, 'routeindex_changed');
 
@@ -81,9 +70,7 @@ function calcRoute(event) {
         var boxes2 = routeBoxer.box(path2, distance);
         drawBoxes(boxes2);
       });
-
     }
-
   });
 }
 
@@ -146,7 +133,7 @@ function drawBoxes(boxes) {
       });
     }
     var avg_crime = parseInt(count / crime_count);
-    $('#severity_score').replaceWith('<div id="severity_score"><p><strong>Number of Crimes: ' + crime_count + '  |   Avg Score: ' + avg_crime + '  |  Total Score: ' + count + '</strong></p></div>');
+    $('#severity_score').replaceWith('<div id="severity_score" class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><h5><strong>Number of Crimes: ' + crime_count + '  |   Avg Score: ' + avg_crime + '  |  Total Score: ' + count + '</strong></h5></div>');
   });
 }
 
@@ -193,7 +180,7 @@ function createMarker(place) {
 
     });
     marker.info = new google.maps.InfoWindow({
-      content: '<p>' + place.name + '</p>' + '<p>' + place.vicinity + '</p>'
+      content: '<p class="marker"><strong>' + place.name + '</strong></p>' + '<p class="marker">' + place.vicinity + '</p>'
     });
     markers.push(marker);
     google.maps.event.addListener(marker, 'click', function () {
@@ -222,10 +209,9 @@ $('#myTab a:last').click(function (e) {
 $(document).ready(function () {
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var center = map.getCenter();
+    map.setZoom(13);
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
-    map.setZoom( map.getZoom() );
-    console.log(map.getZoom())
   });
 });
 

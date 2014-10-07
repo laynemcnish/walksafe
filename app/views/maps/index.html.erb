@@ -10,43 +10,27 @@
     <div class="tab-content">
       <div class="tab-pane active" id="directions-pane">
         <div class="directions-container col-xs-12 col-sm-12">
-          <aside class="aside-1">
-            <div id="control">
-              <table>
-                <form>
-                  <tr>
-                    <td>
-                      <label for="start">Enter your location:</label></td>
-                    <td>
-                      <input type="text" name="start" id="start"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label for="end">Destination:</label></td>
-                    <td>
-                      <input type="text" name="end" id="end"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p></p>
-                    </td>
-                    <td>
-                      <input id="direction-button" type="submit" value="Get directions"/>
-                    </td>
-                  </tr>
-                </form>
-              </table>
-            </div>
-            <div id="directions-panel"></div>
-          </aside>
+          <div id="control">
+            <form role="form">
+              <div class="form-group">
+                <input type="text" name="start" id="start" class="form-control" placeholder="Starting Address"/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="end" id="end" class="form-control" placeholder="Destination Address"/>
+              </div>
+              <div class="form-group">
+                <input id="direction-button" type="submit" value="Get directions"/>
+              </div>
+            </form>
+          </div>
         </div>
+
+        <div id="directions-panel"></div>
+
       </div>
 
       <div class="tab-pane" id="map-pane">
         <div id="map-canvas" class="reset-box-sizing"></div>
-
       </div>
     </div>
   </div>
