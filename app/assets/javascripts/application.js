@@ -63,7 +63,7 @@ function calcRoute(event) {
       var path = response.routes[0].overview_path;
       var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
-      zoom = map.getZoom();
+//      zoom = map.getZoom();
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
         var current_route_index = this.getRouteIndex();
@@ -196,10 +196,9 @@ $(document).ready(function () {
     var center = map.getCenter();
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
-    map.setZoom(zoom);
+    map.setZoom(13);
   });
 });
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
