@@ -179,6 +179,7 @@ function createMarker(place) {
     markers.push(marker);
     google.maps.event.addListener(marker, 'click', function () {
       marker.info.open(map, marker);
+      setTimeout(function () { marker.info.close(); }, 4000);
     });
   }
 
