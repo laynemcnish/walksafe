@@ -141,9 +141,7 @@ function drawBoxes(boxes) {
 function clearBoxes() {
   for (var i = 0; i < boxpolys.length; i++) {
     boxpolys[i].setMap(null);
-
   }
-
   boxpolys = [];
 }
 
@@ -156,8 +154,6 @@ function callback(results, status) {
       createMarker(results[i]);
       var request = { reference: results[i].reference };
       service.getDetails(request, function (details, status2) {
-        //if(status2 == google.maps.places.PlacesServiceStatus.OK)
-//        addResult(details);
       });
       i++;
     }
@@ -171,7 +167,6 @@ function createMarker(place) {
       map: map,
       position: place.geometry.location,
       clickable: true
-
     });
     marker.info = new google.maps.InfoWindow({
       content: '<p class="marker"><strong>' + place.name + '</strong></p>' + '<p class="marker">' + place.vicinity + '</p>'
@@ -182,24 +177,19 @@ function createMarker(place) {
       setTimeout(function () { marker.info.close(); }, 4000);
     });
   }
-
-
 }
 
 function deleteMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
-
   }
-
   markers = [];
 }
 
 $('#myTab a:last').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
-  console.log("clicked")
-})
+});
 
 $(document).ready(function () {
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -207,7 +197,6 @@ $(document).ready(function () {
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
     map.setZoom(zoom);
-
   });
 });
 
