@@ -7,6 +7,7 @@ var rendererOptions = {draggable: false};
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
+var zoom;
 var distance = 0.1; // km
 var boxpolys = [];
 var markers = [];
@@ -62,7 +63,7 @@ function calcRoute(event) {
       var path = response.routes[0].overview_path;
       var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
-
+      zoom = map.getZoom();
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
         var current_route_index = this.getRouteIndex();
@@ -124,8 +125,6 @@ function drawBoxes(boxes) {
       $.each(data["rows"], function (i, crime_point) {
         var lat = crime_point.geo_lat;
         var lon = crime_point.geo_lon;
-        console.log(lat);
-        console.log(lon);
         if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["B"] && lon < northeast["B"]) {
           crime_count += 1;
           sev_count = parseInt(crime_point.severity);
@@ -165,16 +164,9 @@ function callback(results, status) {
   }
 }
 
-//function addResult(place) {
-//  if (place != null) {
-//
-//    // You should now have a "place" object here that has address, name, URL, etc...
-//  }
-//}
-
 function createMarker(place) {
   var str = place.name;
-  if (str.indexOf("Green") == -1 && str.indexOf("Medicinals") == -1 && str.indexOf("Herban") == -1 && str.indexOf("Dispensary") == -1 && str.indexOf("Paternity") == -1 && str.indexOf("Mining") == -1 && str.indexOf("Plastic") == -1 && str.indexOf("Dentist") == -1 && str.indexOf("Dermatology") == -1 && str.indexOf("Marijuana") == -1) {
+  if (str.indexOf("Green") == -1 && str.indexOf("Medicinals") == -1 && str.indexOf("Herban") == -1 && str.indexOf("Dispensary") == -1 && str.indexOf("Paternity") == -1 && str.indexOf("Mining") == -1 && str.indexOf("Plastic") == -1 && str.indexOf("Dentist") == -1 && str.indexOf("Dermatology") == -1 && str.indexOf("Marijuana") == -1 && str.indexOf("Chief") == -1) {
     var marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location,
@@ -211,9 +203,10 @@ $('#myTab a:last').click(function (e) {
 $(document).ready(function () {
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var center = map.getCenter();
-    map.setZoom(13);
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
+    map.setZoom(zoom);
+
   });
 });
 
