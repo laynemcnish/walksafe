@@ -124,6 +124,8 @@ function drawBoxes(boxes) {
       $.each(data["rows"], function (i, crime_point) {
         var lat = crime_point.geo_lat;
         var lon = crime_point.geo_lon;
+        console.log(lat);
+        console.log(lon);
         if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["B"] && lon < northeast["B"]) {
           crime_count += 1;
           sev_count = parseInt(crime_point.severity);
