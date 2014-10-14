@@ -15,7 +15,9 @@ html, body, .container, .tab-content, .tab-pane  {
   box-sizing: content-box !important;
 }
 
+.heading {
 
+}
 
 li {
     list-style: none;
@@ -24,6 +26,15 @@ li {
 
 .header {
 
+}
+
+#severity_score {
+
+}
+
+h5 {
+  padding: 0px;
+  margin: 2px;
 }
 
 
@@ -42,8 +53,8 @@ li {
 
 
 #map-canvas {
- min-height: 480px;
- min-width: 300px;
+ min-height: 420px;
+ min-width: 250px;
   max-width:none;
 }
 

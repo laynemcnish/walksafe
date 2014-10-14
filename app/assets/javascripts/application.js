@@ -134,7 +134,7 @@ function drawBoxes(boxes) {
       });
     }
     var avg_crime = parseInt(count / crime_count);
-    $('#severity_score').replaceWith('<div id="severity_score" class="row col-xs-12 col-sm-12 col-md-9 col-lg-9"><h5><strong>Number of Crimes: ' + crime_count + '  |   Avg Score: ' + avg_crime + '  |  Total Score: ' + count + '</strong></h5></div>');
+    $('#severity_score').replaceWith('<div id="severity_score" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 sev"><h5 class="text-nowrap">Number of Crimes: ' + crime_count + '</h5></div><div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 sev"><h5 class="text-nowrap sev">Avg Score: ' + avg_crime + '</h5></div><div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 sev"><h5 class="text-nowrap sev">Total Score: ' + count + '</h5></div></div>');
   });
 }
 
