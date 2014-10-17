@@ -8,6 +8,7 @@ var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var map;
 var zoom;
+var bounds;
 var distance = 0.1; // km
 var boxpolys = [];
 var markers = [];
@@ -56,14 +57,14 @@ function calcRoute(event) {
   directionsService.route(request, function (response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
-      var contentRight = document.getElementById('directions-panel');
-      contentRight.style.display = 'block';
-      contentRight.style.background = '#f4f4f4';
+      var directionsPanel = document.getElementById('directions-panel');
+      directionsPanel.style.display = 'block';
+      directionsPanel.style.background = '#f4f4f4';
 
       var path = response.routes[0].overview_path;
       var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
-//      zoom = map.getZoom();
+      bounds = response.routes[0][bounds];
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
         var current_route_index = this.getRouteIndex();
@@ -112,11 +113,11 @@ function drawBoxes(boxes) {
       service3.search(place_request3, callback);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
-//        bounds: boxes[i],
-//        fillOpacity: 0,
-//        strokeOpacity: 1.0,
-//        strokeColor: '#000000',
-//        strokeWeight: 1,
+        bounds: boxes[i],
+        fillOpacity: 0,
+        strokeOpacity: 1.0,
+        strokeColor: '#000000',
+        strokeWeight: 1,
 //        *********************************************************************
         map: map
       });
@@ -196,7 +197,9 @@ $(document).ready(function () {
     var center = map.getCenter();
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
-    map.setZoom(13);
+    map.fitBounds(bounds);
+    console.log(bounds);
+//    map.setZoom(zoom);
   });
 });
 

@@ -2,7 +2,7 @@
 * {
 }
 
-html, body, .container, .tab-content, .tab-pane  {
+html, body, .container, .tab-content, .tab-pane {
   height: 100%;
 }
 
@@ -20,8 +20,8 @@ html, body, .container, .tab-content, .tab-pane  {
 }
 
 li {
-    list-style: none;
-    display: inline;
+  list-style: none;
+  display: inline;
 }
 
 .header {
@@ -37,34 +37,32 @@ h5 {
   margin: 2px;
 }
 
-
 .directions-container {
-//    height: 94.5vh;
-    border: 1px solid #ccc;
-//    overflow: auto;
+  border: 1px solid #ccc;
+  //    overflow: auto;
 
 }
 
 #direction-button {
-    font-family: "Helvetica Neue Light", Arial, Sans-Serif;
-    font-size: 15px;
-    width: 100%;
+  font-family: "Helvetica Neue Light", Arial, Sans-Serif;
+  font-size: 15px;
+  width: 100%;
 }
 
-
 #map-canvas {
- min-height: 450px;
- max-height: 600px;
- min-width: 250px;
-  max-width:none;
+  min-height: 450px;
+  max-height: 900px;
+  min-width: 250px;
+  max-width: none;
 }
 
 #map-canvas img {
- max-width: none;
+  max-width: none;
 }
 
 #map-canvas label {
-  width: auto; display:inline;
+  width: auto;
+  display: inline;
 }
 
 #directions-panel {
@@ -72,34 +70,30 @@ h5 {
 }
 
 .adp-warnbox {
-    margin: 0;
-    display: none;
+  margin: 0;
+  display: none;
 }
 
 .adp-legal {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 #control {
-//    padding: 5px;
-//    font-size: 14px;
-//    font-family: Arial, sans-serif;
-//    border: 1px solid #ccc;
-//    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-}
-
-
-#severity_score {
-text-align: right;
-  vertical-align: middle;
-  padding-top: 15px;
+  //    padding: 5px;
+  //    font-size: 14px;
+  //    font-family: Arial, sans-serif;
+  //    border: 1px solid #ccc;
+  //    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
 }
 
 .marker {
   font-size: 9px;
 }
 
+.adp-directions {
+  width: 100%;
 
+}
 
 //
 //
