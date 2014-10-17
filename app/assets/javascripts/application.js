@@ -55,7 +55,7 @@ function calcRoute(event) {
   google.maps.event.clearListeners(directionsDisplay, 'routeindex_changed');
 
   directionsService.route(request, function (response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
+    if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
       var directionsPanel = document.getElementById('directions-panel');
       directionsPanel.style.display = 'block';
@@ -105,11 +105,11 @@ function drawBoxes(boxes) {
         types: ['police']
       };
 
-      service = new google.maps.places.PlacesService(map);
+      var service = new google.maps.places.PlacesService(map);
       service.search(place_request, callback);
-      service2 = new google.maps.places.PlacesService(map);
+      var service2 = new google.maps.places.PlacesService(map);
       service2.search(place_request2, callback);
-      service3 = new google.maps.places.PlacesService(map);
+      var service3 = new google.maps.places.PlacesService(map);
       service3.search(place_request3, callback);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
@@ -148,7 +148,7 @@ function clearBoxes() {
 
 
 function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
     var i = 0;
 
     while (i < results.length) {
@@ -163,7 +163,7 @@ function callback(results, status) {
 
 function createMarker(place) {
   var str = place.name;
-  if (str.indexOf("Green") == -1 && str.indexOf("Medicinals") == -1 && str.indexOf("Herban") == -1 && str.indexOf("Dispensary") == -1 && str.indexOf("Paternity") == -1 && str.indexOf("Mining") == -1 && str.indexOf("Plastic") == -1 && str.indexOf("Dentist") == -1 && str.indexOf("Dermatology") == -1 && str.indexOf("Marijuana") == -1 && str.indexOf("Chief") == -1) {
+  if (str.indexOf("Green") === -1 && str.indexOf("Medicinals") === -1 && str.indexOf("Herban") === -1 && str.indexOf("Dispensary") === -1 && str.indexOf("Paternity") === -1 && str.indexOf("Mining") === -1 && str.indexOf("Plastic") === -1 && str.indexOf("Dentist") === -1 && str.indexOf("Dermatology") === -1 && str.indexOf("Marijuana") === -1 && str.indexOf("Chief") === -1) {
     var marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location,
