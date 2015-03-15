@@ -54,6 +54,11 @@ function calcRoute(event) {
 
   google.maps.event.clearListeners(directionsDisplay, 'routeindex_changed');
 
+  findPath(request)
+}
+
+
+function findPath(request) {
   directionsService.route(request, function (response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
@@ -73,7 +78,34 @@ function calcRoute(event) {
         drawBoxes(boxes2);
       });
     }
-  });
+  })
+}
+
+function placeRequest(bounds) {
+  var place_request = {
+    bounds: bounds,
+    types: ['fire_station'],
+    keyword: 'fire station'
+  };
+
+  var place_request2 = {
+    bounds: bounds,
+    keyword: "health",
+    types: ['hospital']
+  };
+
+  var place_request3 = {
+    bounds: bounds,
+    keyword: 'police',
+    types: ['police']
+  };
+
+  var service = new google.maps.places.PlacesService(map);
+  service.search(place_request, callback);
+  var service2 = new google.maps.places.PlacesService(map);
+  service2.search(place_request2, callback);
+  var service3 = new google.maps.places.PlacesService(map);
+  service3.search(place_request3, callback);
 }
 
 function drawBoxes(boxes) {
@@ -83,34 +115,10 @@ function drawBoxes(boxes) {
   clearBoxes();
   deleteMarkers();
 
-
   promise.then(function (data) {
     for (var i = 0; i < boxes.length; i++) {
       var bounds = boxes[i];
-      var place_request = {
-        bounds: bounds,
-        types: ['fire_station'],
-        keyword: 'fire station'
-      };
-
-      var place_request2 = {
-        bounds: bounds,
-        keyword: "health",
-        types: ['hospital']
-      };
-
-      var place_request3 = {
-        bounds: bounds,
-        keyword: 'police',
-        types: ['police']
-      };
-
-      var service = new google.maps.places.PlacesService(map);
-      service.search(place_request, callback);
-      var service2 = new google.maps.places.PlacesService(map);
-      service2.search(place_request2, callback);
-      var service3 = new google.maps.places.PlacesService(map);
-      service3.search(place_request3, callback);
+      placeRequest(bounds);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
         bounds: boxes[i],
@@ -175,7 +183,9 @@ function createMarker(place) {
     markers.push(marker);
     google.maps.event.addListener(marker, 'click', function () {
       marker.info.open(map, marker);
-      setTimeout(function () { marker.info.close(); }, 4000);
+      setTimeout(function () {
+        marker.info.close();
+      }, 4000);
     });
   }
 }
@@ -200,6 +210,20 @@ $(document).ready(function () {
     map.fitBounds(bounds);
     console.log(bounds);
 //    map.setZoom(zoom);
+  });
+});
+
+$(document).ready(function (){
+  $('#demo').click(function(){
+    var clickButton = function (){
+      $('#direction-button').click()
+    };
+    var begin = document.getElementById('start');
+    var end = document.getElementById('end');
+    $(begin).val("100 e 1st ave");
+    $(end).val("1000 broadway");
+    window.setTimeout(clickButton, 2000);
+    $('#demo').hide();
   });
 });
 
