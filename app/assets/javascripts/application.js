@@ -16,7 +16,6 @@ var markers = [];
 function initialize() {
 
   var mapOptions = {
-    zoom: 13,
     center: new google.maps.LatLng(39.7386033, -104.935449)
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -24,9 +23,14 @@ function initialize() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
+  google.maps.event.addListenerOnce(map, 'zoom_changed', function() {
+    var oldZoom = map.getZoom();
+    map.setZoom(20); //Or whatever
+  });
+
 //  ***************CRIME POINT MAP LAYER ************************
-  cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
-    .addTo(map);
+  //cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
+    //.addTo(map);
 //  ************************************************************
 
   var control = document.getElementById('control');
@@ -121,11 +125,11 @@ function drawBoxes(boxes) {
       placeRequest(bounds);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
-        bounds: boxes[i],
-        fillOpacity: 0,
-        strokeOpacity: 1.0,
-        strokeColor: '#000000',
-        strokeWeight: 1,
+        //bounds: boxes[i],
+        //fillOpacity: 0,
+        //strokeOpacity: 1.0,
+        //strokeColor: '#000000',
+        //strokeWeight: 1,
 //        *********************************************************************
         map: map
       });
@@ -134,7 +138,7 @@ function drawBoxes(boxes) {
       $.each(data["rows"], function (i, crime_point) {
         var lat = crime_point.geo_lat;
         var lon = crime_point.geo_lon;
-        if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["B"] && lon < northeast["B"]) {
+        if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["D"] && lon < northeast["D"]) {
           crime_count += 1;
           sev_count = parseInt(crime_point.severity);
           count += sev_count;
@@ -209,8 +213,6 @@ $(document).ready(function () {
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
     map.fitBounds(bounds);
-    console.log(bounds);
-//    map.setZoom(zoom);
   });
 });
 
@@ -227,6 +229,5 @@ $(document).ready(function (){
     $('#demo').hide();
   });
 });
-
 
 google.maps.event.addDomListener(window, 'load', initialize);
