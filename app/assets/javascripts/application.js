@@ -162,6 +162,7 @@ function callback(results, status) {
     while (i < results.length) {
       createMarker(results[i]);
       var request = { reference: results[i].reference };
+      var service = new google.maps.places.PlacesService(map);
       service.getDetails(request, function (details, status2) {
       });
       i++;
