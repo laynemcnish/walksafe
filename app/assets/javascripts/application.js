@@ -23,11 +23,6 @@ function initialize() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-  google.maps.event.addListenerOnce(map, 'zoom_changed', function() {
-    var oldZoom = map.getZoom();
-    map.setZoom(20); //Or whatever
-  });
-
 //  ***************CRIME POINT MAP LAYER ************************
   //cartodb.createLayer(map, 'http://lmcnish14.cartodb.com/api/v2/viz/ba1f60ea-2fac-11e4-b64f-0e73339ffa50/viz.json')
     //.addTo(map);
@@ -212,6 +207,10 @@ $(document).ready(function () {
     var center = map.getCenter();
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
+    google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+      oldZoom = map.getZoom();
+      map.setZoom(oldZoom + 8)
+    });
     map.fitBounds(bounds);
   });
 });
