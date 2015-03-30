@@ -224,7 +224,7 @@ $(document).ready(function (){
     var end = document.getElementById('end');
     $(begin).val("100 e 1st ave");
     $(end).val("1000 broadway");
-    window.setTimeout(clickButton, 2000);
+    window.setTimeout(clickButton, 1000);
     $('#demo').hide();
   });
 });
