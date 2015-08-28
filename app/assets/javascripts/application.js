@@ -53,7 +53,7 @@ function calcRoute(event) {
 
   google.maps.event.clearListeners(directionsDisplay, 'routeindex_changed');
 
-  findPath(request)
+  findPath(request);
 }
 
 
@@ -68,7 +68,7 @@ function findPath(request) {
       var path = response.routes[0].overview_path;
       var routeBoxer = new RouteBoxer();
       var boxes = routeBoxer.box(path, distance);
-      bounds = response.routes[0][bounds];
+      bounds = response.routes[0].bounds;
       drawBoxes(boxes);
       google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function () {
         var current_route_index = this.getRouteIndex();
@@ -80,21 +80,21 @@ function findPath(request) {
   })
 }
 
-function placeRequest(bounds) {
+function placeRequest(boundaries) {
   var place_request = {
-    bounds: bounds,
+    bounds: boundaries,
     types: ['fire_station'],
     keyword: 'fire station'
   };
 
   var place_request2 = {
-    bounds: bounds,
+    bounds: boundaries,
     keyword: "health",
     types: ['hospital']
   };
 
   var place_request3 = {
-    bounds: bounds,
+    bounds: boundaries,
     keyword: 'police',
     types: ['police']
   };
@@ -116,8 +116,8 @@ function drawBoxes(boxes) {
 
   promise.then(function (data) {
     for (var i = 0; i < boxes.length; i++) {
-      var bounds = boxes[i];
-      placeRequest(bounds);
+      var boundaries = boxes[i];
+      placeRequest(boundaries);
       boxpolys[i] = new google.maps.Rectangle({
 //       ************* BOX BORDERS ********************************************
         //bounds: boxes[i],
@@ -131,9 +131,9 @@ function drawBoxes(boxes) {
       var northeast = boxes[i].getNorthEast();
       var southwest = boxes[i].getSouthWest();
       $.each(data["rows"], function (i, crime_point) {
-        var lat = crime_point.geo_lat;
-        var lon = crime_point.geo_lon;
-        if (lat > southwest["k"] && lat < northeast["k"] && lon > southwest["D"] && lon < northeast["D"]) {
+        var lat = parseFloat(crime_point.geo_lat);
+        var lon = parseFloat(crime_point.geo_lon);
+        if (lon > southwest["K"] && lon < northeast["K"] && lat > southwest["G"] && lat < northeast["G"]) {
           crime_count += 1;
           sev_count = parseInt(crime_point.severity);
           count += sev_count;
@@ -209,9 +209,8 @@ $(document).ready(function () {
     map.setCenter(center);
     google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
       oldZoom = map.getZoom();
-      map.setZoom(oldZoom + 8)
+      map.setZoom(oldZoom + 9)
     });
-    map.fitBounds(bounds);
   });
 });
 
